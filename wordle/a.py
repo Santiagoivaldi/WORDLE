@@ -36,17 +36,18 @@ while a < max:
     if ganador == 0 and a = max-1:
         print("Perdiste, se te acabaron los intentos. La palabra era ", palabra)
         print("Los mejores intentos fueron: ")
-        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Numero de intentos, Tiempo GROUP BY Usuario LIMIT 5;"))
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = '{palabra}' ORDER BY Numero de intentos, Tiempo GROUP BY Usuario LIMIT 5;"))
         print("Los mejores tiempos fueron: ")
-        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Tiempo, Numero de intentos GROUP BY Usuario LIMIT 5;"))
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = '{palabra}' ORDER BY Tiempo, Numero de intentos GROUP BY Usuario LIMIT 5;"))
     if ganador == 1:
         print("Felicidades, ganaste!")
         usuario = str(input("Ingresa tu usuario: "))
-        conexion.execute("INSERT INTO Clasificacion VALUES('usuario',intentos, end, 'palabra');")
+        conexion.execute("INSERT INTO Clasificacion (Usuario, Numero de intentos, Tiempo, Palabra) \ VALUES('{usuario}', {intentos}, {end}, '{palabra}');")
+        conexion.commit()
         print("Los mejores intentos fueron: ")
-        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Numero de intentos, Tiempo GROUP BY Usuario LIMIT 5;"))
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = '{palabra}' ORDER BY Numero de intentos, Tiempo GROUP BY Usuario LIMIT 5;"))
         print("Los mejores tiempos fueron: ")
-        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Tiempo, Numero de intentos GROUP BY Usuario LIMIT 5;"))
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = '{palabra}' ORDER BY Tiempo, Numero de intentos GROUP BY Usuario LIMIT 5;"))
     intentos += 1
     a += 1
 
