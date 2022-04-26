@@ -33,6 +33,12 @@ while a < max:
             a = max
             end = time.perf_counter()
             ganador = 1
+    if ganador == 0 and a = max-1:
+        print("Perdiste, se te acabaron los intentos. La palabra era ", palabra)
+        print("Los mejores intentos fueron: ")
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Numero de intentos, Tiempo GROUP BY Usuario LIMIT 5;"))
+        print("Los mejores tiempos fueron: ")
+        print(conexion.execute("SELECT Usuario, Numero de intentos, Tiempo FROM Clasificaciones WHERE Palabra = 'palabra' ORDER BY Tiempo, Numero de intentos GROUP BY Usuario LIMIT 5;"))
     if ganador == 1:
         print("Felicidades, ganaste!")
         usuario = str(input("Ingresa tu usuario: "))
